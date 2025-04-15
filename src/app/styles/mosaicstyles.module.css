@@ -1,0 +1,82 @@
+.whiteButton,
+.smallwhiteButton {
+  color: white;
+  background-color: black;
+  border-radius: 0;
+  border: 0;
+  width: 33%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(16px, 4vw, 18px); /* Responsive font size */
+  text-align: center;
+  cursor: pointer;
+}
+
+.whiteBGButton {
+  color: black;
+  background-color: white;
+  border-radius: 0;
+  border: 2px solid rgb(11, 194, 62);
+  width: 80%;
+  height: auto;
+  padding: 0.5rem 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(16px, 4vw, 18px);
+  text-align: left;
+  cursor: pointer;
+}
+
+.largegreenButton,
+.greenButton,
+.clgreenButton {
+  display: inline-block;
+  border-radius: 25px;
+  border: 4px solid rgb(0, 45, 203);
+  background: rgb(11, 194, 62);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: clamp(14px, 3.5vw, 16px);
+  font-weight: 600;
+  width: clamp(120px, 20vw, 200px);
+  padding: 0.75rem;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.label1, .label2, .label5, .label10, .label11, .label12 {
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+
+.label1 { font-size: clamp(30px, 6vw, 40px); }
+.label2 { font-size: clamp(20px, 4vw, 24px); }
+.label5 { font-size: clamp(24px, 5vw, 32px); }
+.label10 { font-size: clamp(18px, 3.5vw, 24px); }
+.label11 { font-size: clamp(16px, 3vw, 20px); }
+.label12 { font-size: clamp(14px, 3vw, 18px); }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .whiteButton,
+  .smallwhiteButton,
+  .whiteBGButton {
+    width: 100%;
+    font-size: clamp(14px, 3.5vw, 16px);
+  }
+  .largegreenButton,
+  .greenButton,
+  .clgreenButton {
+    width: clamp(100px, 25vw, 180px);
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .label1 { font-size: clamp(24px, 5vw, 32px); }
+  .label2 { font-size: clamp(16px, 3.5vw, 20px); }
+  .label5 { font-size: clamp(20px, 4vw, 24px); }
+  .label10 { font-size: clamp(16px, 3vw, 20px); }
+  .label11 { font-size: clamp(14px, 2.5vw, 18px); }
+  .label12 { font-size: clamp(12px, 2.5vw, 16px); }
+}

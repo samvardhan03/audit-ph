@@ -1,0 +1,101 @@
+.page {
+  --gray-rgb: 0, 0, 0;
+  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
+  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+
+  display: grid;
+  grid-template-rows: 20px 1fr 20px;
+  align-items: center;
+  justify-items: center;
+  min-height: 100svh;
+  padding: 5vw; /* Use vw for responsive padding */
+  gap: 4rem; /* Use rem for consistent spacing */
+  font-family: var(--font-geist-sans);
+}
+
+@media (prefers-color-scheme: dark) {
+  .page {
+    --gray-rgb: 255, 255, 255;
+    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
+    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+    --button-primary-hover: #ccc;
+    --button-secondary-hover: #1a1a1a;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  grid-row-start: 2;
+  width: 100%; /* Ensure main takes full width */
+  max-width: 1200px; /* Prevent excessive stretching on large screens */
+}
+
+.footer {
+  grid-row-start: 3;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap; /* Allow footer items to wrap */
+  justify-content: center;
+}
+
+/* Breakpoints for different devices */
+@media (max-width: 1200px) {
+  .page {
+    padding: 4vw;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 3vw;
+    gap: 2rem;
+  }
+  .main {
+    gap: 1.5rem;
+  }
+  .ctas {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ctas a {
+    width: 100%;
+    max-width: 300px;
+    height: 44px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 16px;
+    gap: 1.5rem;
+  }
+  .main {
+    gap: 1rem;
+    align-items: center;
+  }
+  .main ol {
+    text-align: center;
+    font-size: 12px;
+  }
+  .footer {
+    gap: 1rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* For very small screens (e.g., phones <400px) */
+@media (max-width: 400px) {
+  .page {
+    padding: 12px;
+  }
+  .ctas a {
+    font-size: 12px;
+    height: 40px;
+  }
+}
