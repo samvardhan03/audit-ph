@@ -13,6 +13,7 @@ export default function Homepage({dbInventoryData,tableDataMap,setTableData}) {
   const [report , setReport] = useState({})
   const handleOpen = () => setOpen(true);
   const [isOpen , setIsOpen] = useState(false)
+  const [name , setName] = useState("")
   const handleClose = () => {
     setOpen(false);
     setImage(null);
@@ -51,7 +52,7 @@ export default function Homepage({dbInventoryData,tableDataMap,setTableData}) {
       const reportData = JSON.parse(data.report_text)
       setReport(reportData);
       setIsOpen(true)
-      setTableData((prev)=>{ return [...prev , { id: data.id , damaged: `${reportData.damaged}` , opened: `${reportData.opened}` , expiry_date: `${reportData.expiry_date.Day}/${reportData.expiry_date.Month}/${reportData.expiry_date.Year}` }  ] })
+      setTableData((prev)=>{ return [...prev , { id: name , damaged: `${reportData.damaged}` , opened: `${reportData.opened}` , expiry_date: `${reportData.expiry_date.Day}/${reportData.expiry_date.Month}/${reportData.expiry_date.Year}` }  ] })
       console.log(reportData)
     } catch (err) {
       setError(err.message);
@@ -108,6 +109,12 @@ export default function Homepage({dbInventoryData,tableDataMap,setTableData}) {
             type="file"
             inputProps={{ accept: 'image/*' }}
             onChange={handleImageChange}
+            fullWidth
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            type="text"
+            onChange={(e)=> setName(e.target.value)}
             fullWidth
             sx={{ mb: 2 }}
           />

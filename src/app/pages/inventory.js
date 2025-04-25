@@ -7,9 +7,9 @@ export default function Inventory({dbInventoryData,tableDataMap,setTableData}) {
 
   const handleSearch = (event) => {
     if (event.target.value.length === 0) {
-      setTableData(dbInventoryData);
+      setTableData(tableDataMap);
     } else {
-      const searchResult = dbInventoryData.filter((item) =>
+      const searchResult = tableDataMap.filter((item) =>
         ['id', 'expiry_date', 'opened', 'damaged'].some((key) =>
           item[key].toLowerCase().includes(String(event.target.value).toLowerCase())
         )
