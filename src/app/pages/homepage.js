@@ -4,7 +4,7 @@ import { Grid, Box, Typography, Button, Modal, TextField, CircularProgress, Aler
 import Card from '@mui/material/Card';
 import Mosaicstyles from '../styles/mosaicstyles.module.css';
 
-export default function Homepage(props) {
+export default function Homepage({dbInventoryData,tableDataMap,setTableData}) {
   const [open, setOpen] = useState(false);
   const [image, setImage] = useState(null);
   const [response, setResponse] = useState(null);
@@ -20,6 +20,7 @@ export default function Homepage(props) {
     setError(null);
   };
 
+  
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -50,6 +51,7 @@ export default function Homepage(props) {
       const reportData = JSON.parse(data.report_text)
       setReport(reportData);
       setIsOpen(true)
+      setTableData((prev)=>{ return [...prev , { id: data.id , damaged: `${reportData.damaged}` , opened: `${reportData.opened}` , expiry_date: `${reportData.expiry_date.Day}/${reportData.expiry_date.Month}/${reportData.expiry_date.Year}` }  ] })
       console.log(reportData)
     } catch (err) {
       setError(err.message);

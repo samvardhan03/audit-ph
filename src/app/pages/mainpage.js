@@ -9,6 +9,26 @@ import Mosaicstyles from '../styles/mosaicstyles.module.css';
 export default function MainPage(props) {
   const [pageName, setPageName] = useState('HomePage');
 
+  const [dbInventoryData, setDBInventoryData] = useState([]);
+  const [tableDataMap, setTableData] = useState([]);
+
+  useEffect(() => {
+      mountFunctionhelo();
+    }, []);
+  
+    const mountFunctionhelo = async () => {
+      const inventoryData = [
+        { id: 'Acetominophen', opened: `${true}`, damaged: `${true}` , expiry_date:`${22}/${8}/${2026}`},
+        { id: 'Ibuprofen', opened: `${true}`, damaged: `${true}`, expiry_date:`${22}/${8}/${2026}` },
+        { id: 'Aspirin', opened: `${true}`,  damaged: `${true}` , expiry_date:`${22}/${8}/${2026}`},
+        { id: 'Oxygen Cylinder', opened: `${true}`,  damaged: `${true}`, expiry_date:`${22}/${8}/${2026}` },
+        { id: 'Aloe Vera Footcream', opened: `${true}`, damaged: `${true}`, expiry_date:`${22}/${8}/${2026}` },
+        { id: 'N95 Mask', opened: `${true}`, damaged: `${true}`,expiry_date:`${22}/${8}/${2026}` },
+      ];
+      setDBInventoryData(inventoryData);
+      setTableData(inventoryData);
+    };
+
   const showPage = (page) => {
     console.log('Page Name is ::' + page + '::');
     if (page === 'Home') {
@@ -30,9 +50,9 @@ export default function MainPage(props) {
 
   let mainBodyPage = '';
   if (pageName === 'HomePage') {
-    mainBodyPage = <Home />;
+    mainBodyPage = <Home dbInventoryData={dbInventoryData} tableDataMap={tableDataMap}  setTableData={setTableData}/>;
   } else if (pageName === 'Inventory') {
-    mainBodyPage = <Inventory />;
+    mainBodyPage = <Inventory dbInventoryData={dbInventoryData} tableDataMap={tableDataMap}  setTableData={setTableData} />;
   } else if (pageName === 'Activity') {
     mainBodyPage = <Activity />;
   }

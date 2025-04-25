@@ -64,7 +64,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 ;
 ;
 ;
-function Homepage(props) {
+function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
     const [open, setOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [image, setImage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [response, setResponse] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
@@ -108,6 +108,17 @@ function Homepage(props) {
             const reportData = JSON.parse(data.report_text);
             setReport(reportData);
             setIsOpen(true);
+            setTableData((prev)=>{
+                return [
+                    ...prev,
+                    {
+                        id: data.id,
+                        damaged: `${reportData.damaged}`,
+                        opened: `${reportData.opened}`,
+                        expiry_date: `${reportData.expiry_date.Day}/${reportData.expiry_date.Month}/${reportData.expiry_date.Year}`
+                    }
+                ];
+            });
             console.log(reportData);
         } catch (err) {
             setError(err.message);
@@ -153,18 +164,18 @@ function Homepage(props) {
                                     children: "Dashboard"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 66,
+                                    lineNumber: 68,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 65,
+                            lineNumber: 67,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/pages/homepage.js",
-                        lineNumber: 64,
+                        lineNumber: 66,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -195,18 +206,18 @@ function Homepage(props) {
                             children: "Scan medicine"
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 70,
+                            lineNumber: 72,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/pages/homepage.js",
-                        lineNumber: 69,
+                        lineNumber: 71,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/pages/homepage.js",
-                lineNumber: 63,
+                lineNumber: 65,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Modal$2f$Modal$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -243,7 +254,7 @@ function Homepage(props) {
                             children: "Scan Medicine"
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 102,
+                            lineNumber: 104,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TextField$2f$TextField$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TextField$3e$__["TextField"], {
@@ -258,7 +269,7 @@ function Homepage(props) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 105,
+                            lineNumber: 107,
                             columnNumber: 11
                         }, this),
                         image && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -272,7 +283,7 @@ function Homepage(props) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 113,
+                            lineNumber: 115,
                             columnNumber: 13
                         }, this),
                         error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Alert$2f$Alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Alert$3e$__["Alert"], {
@@ -283,7 +294,7 @@ function Homepage(props) {
                             children: error
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 118,
+                            lineNumber: 120,
                             columnNumber: 13
                         }, this),
                         isOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -301,7 +312,7 @@ function Homepage(props) {
                                             children: "Expiry date:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/pages/homepage.js",
-                                            lineNumber: 125,
+                                            lineNumber: 127,
                                             columnNumber: 15
                                         }, this),
                                         " ",
@@ -309,7 +320,7 @@ function Homepage(props) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 124,
+                                    lineNumber: 126,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -322,7 +333,7 @@ function Homepage(props) {
                                             children: "Damaged:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/pages/homepage.js",
-                                            lineNumber: 128,
+                                            lineNumber: 130,
                                             columnNumber: 15
                                         }, this),
                                         " ",
@@ -330,7 +341,7 @@ function Homepage(props) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 127,
+                                    lineNumber: 129,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -343,7 +354,7 @@ function Homepage(props) {
                                             children: "Opened:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/pages/homepage.js",
-                                            lineNumber: 131,
+                                            lineNumber: 133,
                                             columnNumber: 15
                                         }, this),
                                         " ",
@@ -351,7 +362,7 @@ function Homepage(props) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 130,
+                                    lineNumber: 132,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -362,13 +373,13 @@ function Homepage(props) {
                                     children: "Close"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 133,
+                                    lineNumber: 135,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 123,
+                            lineNumber: 125,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -389,23 +400,23 @@ function Homepage(props) {
                                 size: 24
                             }, void 0, false, {
                                 fileName: "[project]/src/app/pages/homepage.js",
-                                lineNumber: 149,
+                                lineNumber: 151,
                                 columnNumber: 24
                             }, this) : 'Upload and Scan'
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 137,
+                            lineNumber: 139,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/pages/homepage.js",
-                    lineNumber: 89,
+                    lineNumber: 91,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/pages/homepage.js",
-                lineNumber: 88,
+                lineNumber: 90,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -456,7 +467,7 @@ function Homepage(props) {
                                     children: item.title
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 171,
+                                    lineNumber: 173,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -471,23 +482,23 @@ function Homepage(props) {
                                     children: item.value
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 174,
+                                    lineNumber: 176,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 162,
+                            lineNumber: 164,
                             columnNumber: 13
                         }, this)
                     }, index, false, {
                         fileName: "[project]/src/app/pages/homepage.js",
-                        lineNumber: 161,
+                        lineNumber: 163,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/pages/homepage.js",
-                lineNumber: 154,
+                lineNumber: 156,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -513,13 +524,13 @@ function Homepage(props) {
                                 children: "Activity"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/pages/homepage.js",
-                                lineNumber: 184,
+                                lineNumber: 186,
                                 columnNumber: 18
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/pages/homepage.js",
-                        lineNumber: 183,
+                        lineNumber: 185,
                         columnNumber: 9
                     }, this),
                     [
@@ -555,7 +566,7 @@ function Homepage(props) {
                                     children: activity.name
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 193,
+                                    lineNumber: 195,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -570,25 +581,25 @@ function Homepage(props) {
                                     children: activity.details
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 196,
+                                    lineNumber: 198,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, index, true, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 192,
+                            lineNumber: 194,
                             columnNumber: 11
                         }, this))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/pages/homepage.js",
-                lineNumber: 182,
+                lineNumber: 184,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/pages/homepage.js",
-        lineNumber: 62,
+        lineNumber: 64,
         columnNumber: 5
     }, this);
 }
@@ -621,66 +632,19 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 ;
 ;
 ;
-function Inventory(props) {
-    const [dbInventoryData, setDBInventoryData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [tableDataMap, setTableData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
+function Inventory({ dbInventoryData, tableDataMap, setTableData }) {
     const handleSearch = (event)=>{
         if (event.target.value.length === 0) {
             setTableData(dbInventoryData);
         } else {
             const searchResult = dbInventoryData.filter((item)=>[
                     'id',
-                    'Serial',
-                    'quantity',
-                    'damages'
-                ].some((key)=>item[key].toLowerCase().includes(event.target.value.toLowerCase())));
+                    'expiry_date',
+                    'opened',
+                    'damaged'
+                ].some((key)=>item[key].toLowerCase().includes(String(event.target.value).toLowerCase())));
             setTableData(searchResult);
         }
-    };
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        mountFunction();
-    }, []);
-    const mountFunction = async ()=>{
-        const inventoryData = [
-            {
-                id: 'Acetominophen',
-                Serial: '#447251',
-                quantity: '100',
-                damages: 'None'
-            },
-            {
-                id: 'Ibuprofen',
-                Serial: '#316815',
-                quantity: '77',
-                damages: 'None'
-            },
-            {
-                id: 'Aspirin',
-                Serial: '#859520',
-                quantity: '27',
-                damages: 'Physical damage'
-            },
-            {
-                id: 'Oxygen Cylinder',
-                Serial: '#71961',
-                quantity: '40',
-                damages: 'None'
-            },
-            {
-                id: 'Aloe Vera Footcream',
-                Serial: '#3112',
-                quantity: '21',
-                damages: 'Incorrect temperature'
-            },
-            {
-                id: 'N95 Mask',
-                Serial: '#99',
-                quantity: '105',
-                damages: 'Opened'
-            }
-        ];
-        setDBInventoryData(inventoryData);
-        setTableData(inventoryData);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
         sx: {
@@ -710,7 +674,7 @@ function Inventory(props) {
                             children: "Filter"
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/inventory.js",
-                            lineNumber: 44,
+                            lineNumber: 26,
                             columnNumber: 11
                         }, this),
                         [
@@ -736,7 +700,7 @@ function Inventory(props) {
                                 children: filter
                             }, index, false, {
                                 fileName: "[project]/src/app/pages/inventory.js",
-                                lineNumber: 48,
+                                lineNumber: 30,
                                 columnNumber: 13
                             }, this)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -751,7 +715,7 @@ function Inventory(props) {
                             children: "Search"
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/inventory.js",
-                            lineNumber: 63,
+                            lineNumber: 45,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TextField$2f$TextField$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TextField$3e$__["TextField"], {
@@ -768,13 +732,13 @@ function Inventory(props) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/inventory.js",
-                            lineNumber: 66,
+                            lineNumber: 48,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/pages/inventory.js",
-                    lineNumber: 43,
+                    lineNumber: 25,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -809,18 +773,18 @@ function Inventory(props) {
                                                 children: "inventory"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/pages/inventory.js",
-                                                lineNumber: 80,
+                                                lineNumber: 62,
                                                 columnNumber: 22
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/pages/inventory.js",
-                                        lineNumber: 79,
+                                        lineNumber: 61,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/inventory.js",
-                                    lineNumber: 78,
+                                    lineNumber: 60,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -848,18 +812,18 @@ function Inventory(props) {
                                         children: "Manage inventory"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/pages/inventory.js",
-                                        lineNumber: 84,
+                                        lineNumber: 66,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/inventory.js",
-                                    lineNumber: 83,
+                                    lineNumber: 65,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/pages/inventory.js",
-                            lineNumber: 77,
+                            lineNumber: 59,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TableContainer$2f$TableContainer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TableContainer$3e$__["TableContainer"], {
@@ -876,10 +840,9 @@ function Inventory(props) {
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TableRow$2f$TableRow$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TableRow$3e$__["TableRow"], {
                                             children: [
                                                 'S.No',
-                                                'Product',
-                                                'Serial number',
-                                                'Total units',
-                                                'Damages'
+                                                'Opened',
+                                                'Damaged',
+                                                'Expiry Date'
                                             ].map((header)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
                                                     sx: {
                                                         borderBottom: 'none',
@@ -893,17 +856,17 @@ function Inventory(props) {
                                                     children: header
                                                 }, header, false, {
                                                     fileName: "[project]/src/app/pages/inventory.js",
-                                                    lineNumber: 103,
+                                                    lineNumber: 85,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/pages/inventory.js",
-                                            lineNumber: 101,
+                                            lineNumber: 83,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/pages/inventory.js",
-                                        lineNumber: 100,
+                                        lineNumber: 82,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TableBody$2f$TableBody$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TableBody$3e$__["TableBody"], {
@@ -918,25 +881,10 @@ function Inventory(props) {
                                                                 sm: '0.875rem'
                                                             }
                                                         },
-                                                        children: index + 1
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/app/pages/inventory.js",
-                                                        lineNumber: 120,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
-                                                        sx: {
-                                                            borderBottom: 'none',
-                                                            py: 2,
-                                                            fontSize: {
-                                                                xs: '0.75rem',
-                                                                sm: '0.875rem'
-                                                            }
-                                                        },
                                                         children: item.id
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/pages/inventory.js",
-                                                        lineNumber: 123,
+                                                        lineNumber: 102,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
@@ -948,10 +896,10 @@ function Inventory(props) {
                                                                 sm: '0.875rem'
                                                             }
                                                         },
-                                                        children: item.Serial
+                                                        children: item.opened
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/pages/inventory.js",
-                                                        lineNumber: 126,
+                                                        lineNumber: 105,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
@@ -963,10 +911,10 @@ function Inventory(props) {
                                                                 sm: '0.875rem'
                                                             }
                                                         },
-                                                        children: item.quantity
+                                                        children: item.damaged
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/pages/inventory.js",
-                                                        lineNumber: 129,
+                                                        lineNumber: 108,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
@@ -978,49 +926,49 @@ function Inventory(props) {
                                                                 sm: '0.875rem'
                                                             }
                                                         },
-                                                        children: item.damages
+                                                        children: item.expiry_date
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/pages/inventory.js",
-                                                        lineNumber: 132,
+                                                        lineNumber: 112,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, item.id, true, {
                                                 fileName: "[project]/src/app/pages/inventory.js",
-                                                lineNumber: 119,
+                                                lineNumber: 101,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/pages/inventory.js",
-                                        lineNumber: 117,
+                                        lineNumber: 99,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/pages/inventory.js",
-                                lineNumber: 99,
+                                lineNumber: 81,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/inventory.js",
-                            lineNumber: 98,
+                            lineNumber: 80,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/pages/inventory.js",
-                    lineNumber: 76,
+                    lineNumber: 58,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/pages/inventory.js",
-            lineNumber: 42,
+            lineNumber: 24,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/pages/inventory.js",
-        lineNumber: 41,
+        lineNumber: 23,
         columnNumber: 5
     }, this);
 }
@@ -1443,6 +1391,53 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 ;
 function MainPage(props) {
     const [pageName, setPageName] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('HomePage');
+    const [dbInventoryData, setDBInventoryData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [tableDataMap, setTableData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        mountFunctionhelo();
+    }, []);
+    const mountFunctionhelo = async ()=>{
+        const inventoryData = [
+            {
+                id: 'Acetominophen',
+                opened: `${true}`,
+                damaged: `${true}`,
+                expiry_date: `${22}/${8}/${2026}`
+            },
+            {
+                id: 'Ibuprofen',
+                opened: `${true}`,
+                damaged: `${true}`,
+                expiry_date: `${22}/${8}/${2026}`
+            },
+            {
+                id: 'Aspirin',
+                opened: `${true}`,
+                damaged: `${true}`,
+                expiry_date: `${22}/${8}/${2026}`
+            },
+            {
+                id: 'Oxygen Cylinder',
+                opened: `${true}`,
+                damaged: `${true}`,
+                expiry_date: `${22}/${8}/${2026}`
+            },
+            {
+                id: 'Aloe Vera Footcream',
+                opened: `${true}`,
+                damaged: `${true}`,
+                expiry_date: `${22}/${8}/${2026}`
+            },
+            {
+                id: 'N95 Mask',
+                opened: `${true}`,
+                damaged: `${true}`,
+                expiry_date: `${22}/${8}/${2026}`
+            }
+        ];
+        setDBInventoryData(inventoryData);
+        setTableData(inventoryData);
+    };
     const showPage = (page)=>{
         console.log('Page Name is ::' + page + '::');
         if (page === 'Home') {
@@ -1461,21 +1456,29 @@ function MainPage(props) {
     };
     let mainBodyPage = '';
     if (pageName === 'HomePage') {
-        mainBodyPage = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$pages$2f$homepage$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+        mainBodyPage = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$pages$2f$homepage$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+            dbInventoryData: dbInventoryData,
+            tableDataMap: tableDataMap,
+            setTableData: setTableData
+        }, void 0, false, {
             fileName: "[project]/src/app/pages/mainpage.js",
-            lineNumber: 33,
+            lineNumber: 53,
             columnNumber: 20
         }, this);
     } else if (pageName === 'Inventory') {
-        mainBodyPage = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$pages$2f$inventory$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
+        mainBodyPage = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$pages$2f$inventory$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+            dbInventoryData: dbInventoryData,
+            tableDataMap: tableDataMap,
+            setTableData: setTableData
+        }, void 0, false, {
             fileName: "[project]/src/app/pages/mainpage.js",
-            lineNumber: 35,
+            lineNumber: 55,
             columnNumber: 20
         }, this);
     } else if (pageName === 'Activity') {
         mainBodyPage = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$pages$2f$activity$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
             fileName: "[project]/src/app/pages/mainpage.js",
-            lineNumber: 37,
+            lineNumber: 57,
             columnNumber: 20
         }, this);
     }
@@ -1508,12 +1511,12 @@ function MainPage(props) {
                         children: "Mosaic"
                     }, void 0, false, {
                         fileName: "[project]/src/app/pages/mainpage.js",
-                        lineNumber: 44,
+                        lineNumber: 64,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/pages/mainpage.js",
-                    lineNumber: 43,
+                    lineNumber: 63,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -1555,23 +1558,23 @@ function MainPage(props) {
                             children: page
                         }, page, false, {
                             fileName: "[project]/src/app/pages/mainpage.js",
-                            lineNumber: 53,
+                            lineNumber: 73,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/src/app/pages/mainpage.js",
-                    lineNumber: 51,
+                    lineNumber: 71,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/pages/mainpage.js",
-            lineNumber: 42,
+            lineNumber: 62,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/pages/mainpage.js",
-        lineNumber: 41,
+        lineNumber: 61,
         columnNumber: 5
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -1588,7 +1591,7 @@ function MainPage(props) {
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/pages/mainpage.js",
-        lineNumber: 77,
+        lineNumber: 97,
         columnNumber: 5
     }, this);
 }

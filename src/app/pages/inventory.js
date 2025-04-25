@@ -3,39 +3,21 @@ import { useState, useEffect } from 'react';
 import { Box, Typography, TextField, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Grid } from '@mui/material';
 import Mosaicstyles from '../styles/mosaicstyles.module.css';
 
-export default function Inventory(props) {
-  const [dbInventoryData, setDBInventoryData] = useState([]);
-  const [tableDataMap, setTableData] = useState([]);
+export default function Inventory({dbInventoryData,tableDataMap,setTableData}) {
 
   const handleSearch = (event) => {
     if (event.target.value.length === 0) {
       setTableData(dbInventoryData);
     } else {
       const searchResult = dbInventoryData.filter((item) =>
-        ['id', 'Serial', 'quantity', 'damages'].some((key) =>
-          item[key].toLowerCase().includes(event.target.value.toLowerCase())
+        ['id', 'expiry_date', 'opened', 'damaged'].some((key) =>
+          item[key].toLowerCase().includes(String(event.target.value).toLowerCase())
         )
       );
       setTableData(searchResult);
     }
   };
 
-  useEffect(() => {
-    mountFunction();
-  }, []);
-
-  const mountFunction = async () => {
-    const inventoryData = [
-      { id: 'Acetominophen', Serial: '#447251', quantity: '100', damages: 'None' },
-      { id: 'Ibuprofen', Serial: '#316815', quantity: '77', damages: 'None' },
-      { id: 'Aspirin', Serial: '#859520', quantity: '27', damages: 'Physical damage' },
-      { id: 'Oxygen Cylinder', Serial: '#71961', quantity: '40', damages: 'None' },
-      { id: 'Aloe Vera Footcream', Serial: '#3112', quantity: '21', damages: 'Incorrect temperature' },
-      { id: 'N95 Mask', Serial: '#99', quantity: '105', damages: 'Opened' },
-    ];
-    setDBInventoryData(inventoryData);
-    setTableData(inventoryData);
-  };
 
   return (
     <Box sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
@@ -99,7 +81,7 @@ export default function Inventory(props) {
             <Table stickyHeader>
               <TableHead>
                 <TableRow>
-                  {['S.No', 'Product', 'Serial number', 'Total units', 'Damages'].map((header) => (
+                  {['S.No', 'Opened', 'Damaged', 'Expiry Date'].map((header) => (
                     <TableCell
                       key={header}
                       sx={{
@@ -118,19 +100,17 @@ export default function Inventory(props) {
                 {tableDataMap.map((item, index) => (
                   <TableRow key={item.id}>
                     <TableCell sx={{ borderBottom: 'none', py: 2, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
-                      {index + 1}
-                    </TableCell>
-                    <TableCell sx={{ borderBottom: 'none', py: 2, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                       {item.id}
                     </TableCell>
                     <TableCell sx={{ borderBottom: 'none', py: 2, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
-                      {item.Serial}
+                      {item.opened}
                     </TableCell>
                     <TableCell sx={{ borderBottom: 'none', py: 2, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
-                      {item.quantity}
+                      {item.damaged}
                     </TableCell>
+                    
                     <TableCell sx={{ borderBottom: 'none', py: 2, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
-                      {item.damages}
+                      {item.expiry_date}
                     </TableCell>
                   </TableRow>
                 ))}
