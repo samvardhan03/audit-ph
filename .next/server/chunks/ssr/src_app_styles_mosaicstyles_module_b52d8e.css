@@ -1,0 +1,112 @@
+/* [project]/src/app/styles/mosaicstyles.module.css [app-client] (css) */
+.mosaicstyles-module__Ttf9pG__whiteButton, .mosaicstyles-module__Ttf9pG__smallwhiteButton {
+  color: #fff;
+  background-color: #000;
+  border-radius: 0;
+  border: 0;
+  width: 33%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(16px, 4vw, 18px);
+  text-align: center;
+  cursor: pointer;
+}
+
+.mosaicstyles-module__Ttf9pG__whiteBGButton {
+  color: #000;
+  background-color: #fff;
+  border-radius: 0;
+  border: 2px solid #0bc23e;
+  width: 80%;
+  height: auto;
+  padding: .5rem 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(16px, 4vw, 18px);
+  text-align: left;
+  cursor: pointer;
+}
+
+.mosaicstyles-module__Ttf9pG__largegreenButton, .mosaicstyles-module__Ttf9pG__greenButton, .mosaicstyles-module__Ttf9pG__clgreenButton {
+  display: inline-block;
+  border-radius: 25px;
+  border: 4px solid #002dcb;
+  background: #0bc23e;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: clamp(14px, 3.5vw, 16px);
+  font-weight: 600;
+  width: clamp(120px, 20vw, 200px);
+  padding: .75rem;
+  transition: all .4s;
+  cursor: pointer;
+}
+
+.mosaicstyles-module__Ttf9pG__label1, .mosaicstyles-module__Ttf9pG__label2, .mosaicstyles-module__Ttf9pG__label5, .mosaicstyles-module__Ttf9pG__label10, .mosaicstyles-module__Ttf9pG__label11, .mosaicstyles-module__Ttf9pG__label12 {
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+}
+
+.mosaicstyles-module__Ttf9pG__label1 {
+  font-size: clamp(30px, 6vw, 40px);
+}
+
+.mosaicstyles-module__Ttf9pG__label2 {
+  font-size: clamp(20px, 4vw, 24px);
+}
+
+.mosaicstyles-module__Ttf9pG__label5 {
+  font-size: clamp(24px, 5vw, 32px);
+}
+
+.mosaicstyles-module__Ttf9pG__label10 {
+  font-size: clamp(18px, 3.5vw, 24px);
+}
+
+.mosaicstyles-module__Ttf9pG__label11 {
+  font-size: clamp(16px, 3vw, 20px);
+}
+
+.mosaicstyles-module__Ttf9pG__label12 {
+  font-size: clamp(14px, 3vw, 18px);
+}
+
+@media (width <= 900px) {
+  .mosaicstyles-module__Ttf9pG__whiteButton, .mosaicstyles-module__Ttf9pG__smallwhiteButton, .mosaicstyles-module__Ttf9pG__whiteBGButton {
+    width: 100%;
+    font-size: clamp(14px, 3.5vw, 16px);
+  }
+
+  .mosaicstyles-module__Ttf9pG__largegreenButton, .mosaicstyles-module__Ttf9pG__greenButton, .mosaicstyles-module__Ttf9pG__clgreenButton {
+    width: clamp(100px, 25vw, 180px);
+    padding: .5rem;
+  }
+}
+
+@media (width <= 600px) {
+  .mosaicstyles-module__Ttf9pG__label1 {
+    font-size: clamp(24px, 5vw, 32px);
+  }
+
+  .mosaicstyles-module__Ttf9pG__label2 {
+    font-size: clamp(16px, 3.5vw, 20px);
+  }
+
+  .mosaicstyles-module__Ttf9pG__label5 {
+    font-size: clamp(20px, 4vw, 24px);
+  }
+
+  .mosaicstyles-module__Ttf9pG__label10 {
+    font-size: clamp(16px, 3vw, 20px);
+  }
+
+  .mosaicstyles-module__Ttf9pG__label11 {
+    font-size: clamp(14px, 2.5vw, 18px);
+  }
+
+  .mosaicstyles-module__Ttf9pG__label12 {
+    font-size: clamp(12px, 2.5vw, 16px);
+  }
+}
+
+/*# sourceMappingURL=src_app_styles_mosaicstyles_module_b52d8e.css.map*/

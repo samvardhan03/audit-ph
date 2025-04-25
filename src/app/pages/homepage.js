@@ -10,8 +10,9 @@ export default function Homepage(props) {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  const [report , setReport] = useState({})
   const handleOpen = () => setOpen(true);
+  const [isOpen , setIsOpen] = useState(false)
   const handleClose = () => {
     setOpen(false);
     setImage(null);
@@ -35,10 +36,10 @@ export default function Homepage(props) {
     setLoading(true);
     setError(null);
     setResponse(null);
-    const formData = new FormData();
+    let formData = new FormData();
     formData.append('image', image);
     try {
-      const res = await fetch('http://your-backend-url/api/scan-medicine/', {
+      const res = await fetch('http://127.0.0.1:8000/scan/', {
         method: 'POST',
         body: formData,
       });
@@ -46,7 +47,10 @@ export default function Homepage(props) {
         throw new Error('Failed to scan medicine. Please try again.');
       }
       const data = await res.json();
-      setResponse(data);
+      const reportData = JSON.parse(data.report_text)
+      setReport(reportData);
+      setIsOpen(true)
+      console.log(reportData)
     } catch (err) {
       setError(err.message);
     } finally {
@@ -115,15 +119,20 @@ export default function Homepage(props) {
               {error}
             </Alert>
           )}
-          {response && (
+          {isOpen && (
             <Box sx={{ mb: 2 }}>
-              <Typography variant="body1">
-                <strong>Medicine:</strong> {response.medicine_name || 'N/A'}
-              </Typography>
-              <Typography variant="body1">
-                <strong>Details:</strong> {response.details || 'No details available'}
-              </Typography>
-            </Box>
+            <Typography variant="body1" sx={{ color: 'black' }}>
+              <strong>Expiry date:</strong> {`${report.expiry_date.Day}/${report.expiry_date.Month}/${report.expiry_date.Year}` || 'N/A'}
+            </Typography>
+            <Typography variant="body1" sx={{ color: 'black' }}>
+              <strong>Damaged:</strong> {`${report.damaged}`}
+            </Typography>
+            <Typography variant="body1" sx={{ color: 'black' }}>
+              <strong>Opened:</strong> {`${report.opened}`}
+            </Typography>
+            <button onClick={()=> setIsOpen(false)}
+            sx={{backgroundColor:"red"}}>Close</button>
+          </Box>
           )}
           <Button
             variant="contained"
