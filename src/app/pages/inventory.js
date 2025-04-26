@@ -81,7 +81,7 @@ export default function Inventory({dbInventoryData,tableDataMap,setTableData}) {
             <Table stickyHeader>
               <TableHead>
                 <TableRow>
-                  {['S.No', 'Opened', 'Damaged', 'Expiry Date'].map((header) => (
+                  {['S.No', 'Opened', 'Damaged', 'Expiry Date', "Usable"].map((header) => (
                     <TableCell
                       key={header}
                       sx={{
@@ -108,9 +108,11 @@ export default function Inventory({dbInventoryData,tableDataMap,setTableData}) {
                     <TableCell sx={{ borderBottom: 'none', py: 2, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                       {item.damaged}
                     </TableCell>
-                    
                     <TableCell sx={{ borderBottom: 'none', py: 2, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                       {item.expiry_date}
+                    </TableCell>
+                    <TableCell sx={{ borderBottom: 'none', py: 2, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
+                      {item.usable}
                     </TableCell>
                   </TableRow>
                 ))}

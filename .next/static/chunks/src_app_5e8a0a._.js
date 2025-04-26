@@ -61,7 +61,6 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
     _s();
     const [open, setOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [image, setImage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [response, setResponse] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [report, setReport] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({});
@@ -71,7 +70,6 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
     const handleClose = ()=>{
         setOpen(false);
         setImage(null);
-        setResponse(null);
         setError(null);
     };
     const handleImageChange = (event)=>{
@@ -88,7 +86,6 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
         }
         setLoading(true);
         setError(null);
-        setResponse(null);
         let formData = new FormData();
         formData.append('image', image);
         try {
@@ -103,6 +100,17 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
             const reportData = JSON.parse(data.report_text);
             setReport(reportData);
             setIsOpen(true);
+            const exp = new Date(`${reportData.expiry_date.Month}/${reportData.expiry_date.Day}/${reportData.expiry_date.Year}`);
+            const curr = Date.now();
+            let diff = exp.getTime() - curr;
+            let good = false;
+            if (diff > 0 && reportData.damaged && reportData.opened) {
+                good = true;
+            }
+            let usable = "❌";
+            if (good) {
+                usable = "✅";
+            }
             setTableData((prev)=>{
                 return [
                     ...prev,
@@ -110,7 +118,8 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                         id: name,
                         damaged: `${reportData.damaged}`,
                         opened: `${reportData.opened}`,
-                        expiry_date: `${reportData.expiry_date.Day}/${reportData.expiry_date.Month}/${reportData.expiry_date.Year}`
+                        expiry_date: `${reportData.expiry_date.Day}/${reportData.expiry_date.Month}/${reportData.expiry_date.Year}`,
+                        usable: usable
                     }
                 ];
             });
@@ -159,18 +168,18 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                     children: "Dashboard"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 69,
+                                    lineNumber: 84,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 68,
+                            lineNumber: 83,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/pages/homepage.js",
-                        lineNumber: 67,
+                        lineNumber: 82,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -201,18 +210,18 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                             children: "Scan medicine"
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 73,
+                            lineNumber: 88,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/pages/homepage.js",
-                        lineNumber: 72,
+                        lineNumber: 87,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/pages/homepage.js",
-                lineNumber: 66,
+                lineNumber: 81,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Modal$2f$Modal$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Modal$3e$__["Modal"], {
@@ -249,7 +258,7 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                             children: "Scan Medicine"
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 105,
+                            lineNumber: 120,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TextField$2f$TextField$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TextField$3e$__["TextField"], {
@@ -264,7 +273,7 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 108,
+                            lineNumber: 123,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TextField$2f$TextField$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TextField$3e$__["TextField"], {
@@ -276,7 +285,7 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 115,
+                            lineNumber: 130,
                             columnNumber: 11
                         }, this),
                         image && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -290,7 +299,7 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 122,
+                            lineNumber: 137,
                             columnNumber: 13
                         }, this),
                         error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Alert$2f$Alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Alert$3e$__["Alert"], {
@@ -301,7 +310,7 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                             children: error
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 127,
+                            lineNumber: 142,
                             columnNumber: 13
                         }, this),
                         isOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -319,7 +328,7 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                             children: "Expiry date:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/pages/homepage.js",
-                                            lineNumber: 134,
+                                            lineNumber: 149,
                                             columnNumber: 15
                                         }, this),
                                         " ",
@@ -327,7 +336,7 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 133,
+                                    lineNumber: 148,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -340,7 +349,7 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                             children: "Damaged:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/pages/homepage.js",
-                                            lineNumber: 137,
+                                            lineNumber: 152,
                                             columnNumber: 15
                                         }, this),
                                         " ",
@@ -348,7 +357,7 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 136,
+                                    lineNumber: 151,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -361,7 +370,7 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                             children: "Opened:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/pages/homepage.js",
-                                            lineNumber: 140,
+                                            lineNumber: 155,
                                             columnNumber: 15
                                         }, this),
                                         " ",
@@ -369,7 +378,7 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 139,
+                                    lineNumber: 154,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -380,13 +389,13 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                     children: "Close"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 142,
+                                    lineNumber: 157,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 132,
+                            lineNumber: 147,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -407,23 +416,23 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                 size: 24
                             }, void 0, false, {
                                 fileName: "[project]/src/app/pages/homepage.js",
-                                lineNumber: 158,
+                                lineNumber: 173,
                                 columnNumber: 24
                             }, this) : 'Upload and Scan'
                         }, void 0, false, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 146,
+                            lineNumber: 161,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/pages/homepage.js",
-                    lineNumber: 92,
+                    lineNumber: 107,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/pages/homepage.js",
-                lineNumber: 91,
+                lineNumber: 106,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -474,7 +483,7 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                     children: item.title
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 180,
+                                    lineNumber: 195,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -489,23 +498,23 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                     children: item.value
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 183,
+                                    lineNumber: 198,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 171,
+                            lineNumber: 186,
                             columnNumber: 13
                         }, this)
                     }, index, false, {
                         fileName: "[project]/src/app/pages/homepage.js",
-                        lineNumber: 170,
+                        lineNumber: 185,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/pages/homepage.js",
-                lineNumber: 163,
+                lineNumber: 178,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -531,13 +540,13 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                 children: "Activity"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/pages/homepage.js",
-                                lineNumber: 193,
+                                lineNumber: 208,
                                 columnNumber: 18
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/pages/homepage.js",
-                        lineNumber: 192,
+                        lineNumber: 207,
                         columnNumber: 9
                     }, this),
                     [
@@ -573,7 +582,7 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                     children: activity.name
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 202,
+                                    lineNumber: 217,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -588,29 +597,29 @@ function Homepage({ dbInventoryData, tableDataMap, setTableData }) {
                                     children: activity.details
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/pages/homepage.js",
-                                    lineNumber: 205,
+                                    lineNumber: 220,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, index, true, {
                             fileName: "[project]/src/app/pages/homepage.js",
-                            lineNumber: 201,
+                            lineNumber: 216,
                             columnNumber: 11
                         }, this))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/pages/homepage.js",
-                lineNumber: 191,
+                lineNumber: 206,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/pages/homepage.js",
-        lineNumber: 65,
+        lineNumber: 80,
         columnNumber: 5
     }, this);
 }
-_s(Homepage, "1q4VMF4FFF2w6YLqNyzFREINokQ=");
+_s(Homepage, "fGpJ+j2nfPkC7wEiylClYRV/SGE=");
 _c = Homepage;
 var _c;
 __turbopack_refresh__.register(_c, "Homepage");
@@ -856,7 +865,8 @@ function Inventory({ dbInventoryData, tableDataMap, setTableData }) {
                                                 'S.No',
                                                 'Opened',
                                                 'Damaged',
-                                                'Expiry Date'
+                                                'Expiry Date',
+                                                "Usable"
                                             ].map((header)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
                                                     sx: {
                                                         borderBottom: 'none',
@@ -943,7 +953,22 @@ function Inventory({ dbInventoryData, tableDataMap, setTableData }) {
                                                         children: item.expiry_date
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/pages/inventory.js",
-                                                        lineNumber: 112,
+                                                        lineNumber: 111,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TableCell$2f$TableCell$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__TableCell$3e$__["TableCell"], {
+                                                        sx: {
+                                                            borderBottom: 'none',
+                                                            py: 2,
+                                                            fontSize: {
+                                                                xs: '0.75rem',
+                                                                sm: '0.875rem'
+                                                            }
+                                                        },
+                                                        children: item.usable
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/app/pages/inventory.js",
+                                                        lineNumber: 114,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
@@ -1435,39 +1460,45 @@ function MainPage(props) {
         const inventoryData = [
             {
                 id: 'Acetominophen',
-                opened: `${true}`,
+                opened: `${false}`,
                 damaged: `${true}`,
-                expiry_date: `${22}/${8}/${2026}`
+                expiry_date: `${22}/${8}/${2023}`,
+                usable: "❌"
             },
             {
                 id: 'Ibuprofen',
-                opened: `${true}`,
-                damaged: `${true}`,
-                expiry_date: `${22}/${8}/${2026}`
+                opened: `${false}`,
+                damaged: `${false}`,
+                expiry_date: `${22}/${3}/${2021}`,
+                usable: "✅"
             },
             {
                 id: 'Aspirin',
                 opened: `${true}`,
-                damaged: `${true}`,
-                expiry_date: `${22}/${8}/${2026}`
+                damaged: `${false}`,
+                expiry_date: `${22}/${6}/${2026}`,
+                usable: "❌"
             },
             {
                 id: 'Oxygen Cylinder',
-                opened: `${true}`,
-                damaged: `${true}`,
-                expiry_date: `${22}/${8}/${2026}`
+                opened: `${false}`,
+                damaged: `${false}`,
+                expiry_date: `${2}/${8}/${2026}`,
+                usable: "✅"
             },
             {
                 id: 'Aloe Vera Footcream',
-                opened: `${true}`,
-                damaged: `${true}`,
-                expiry_date: `${22}/${8}/${2026}`
+                opened: `${false}`,
+                damaged: `${false}`,
+                expiry_date: `${1}/${12}/${2026}`,
+                usable: "✅"
             },
             {
                 id: 'N95 Mask',
                 opened: `${true}`,
                 damaged: `${true}`,
-                expiry_date: `${22}/${8}/${2026}`
+                expiry_date: `${12}/${8}/${2024}`,
+                usable: "❌"
             }
         ];
         setDBInventoryData(inventoryData);

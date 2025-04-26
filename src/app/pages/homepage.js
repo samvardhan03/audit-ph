@@ -7,7 +7,6 @@ import Mosaicstyles from '../styles/mosaicstyles.module.css';
 export default function Homepage({dbInventoryData,tableDataMap,setTableData}) {
   const [open, setOpen] = useState(false);
   const [image, setImage] = useState(null);
-  const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [report , setReport] = useState({})
@@ -17,7 +16,6 @@ export default function Homepage({dbInventoryData,tableDataMap,setTableData}) {
   const handleClose = () => {
     setOpen(false);
     setImage(null);
-    setResponse(null);
     setError(null);
   };
 
@@ -37,7 +35,6 @@ export default function Homepage({dbInventoryData,tableDataMap,setTableData}) {
     }
     setLoading(true);
     setError(null);
-    setResponse(null);
     let formData = new FormData();
     formData.append('image', image);
     try {
@@ -52,7 +49,25 @@ export default function Homepage({dbInventoryData,tableDataMap,setTableData}) {
       const reportData = JSON.parse(data.report_text)
       setReport(reportData);
       setIsOpen(true)
-      setTableData((prev)=>{ return [...prev , { id: name , damaged: `${reportData.damaged}` , opened: `${reportData.opened}` , expiry_date: `${reportData.expiry_date.Day}/${reportData.expiry_date.Month}/${reportData.expiry_date.Year}` }  ] })
+      const exp = new Date(`${reportData.expiry_date.Month}/${reportData.expiry_date.Day}/${reportData.expiry_date.Year}`)
+      const curr = Date.now()
+      let diff = exp.getTime() - curr
+      let good = false; 
+      if ( diff > 0 && reportData.damaged && reportData.opened ){
+        good = true
+      }
+      let usable = "❌"
+      if(good){
+        usable = "✅"
+      }
+      setTableData((prev)=>{ return [...prev , { 
+        id: name , 
+        damaged: `${reportData.damaged}` , 
+        opened: `${reportData.opened}` , 
+        expiry_date: `${reportData.expiry_date.Day}/${reportData.expiry_date.Month}/${reportData.expiry_date.Year}`,
+        usable: usable}  ]       
+      }
+      )
       console.log(reportData)
     } catch (err) {
       setError(err.message);
