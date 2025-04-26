@@ -53,7 +53,7 @@ export default function Homepage({dbInventoryData,tableDataMap,setTableData}) {
       const curr = Date.now()
       let diff = exp.getTime() - curr
       let good = false; 
-      if ( diff > 0 && reportData.damaged && reportData.opened ){
+      if ( diff > 0 && !reportData.damaged && !reportData.opened ){
         good = true
       }
       let usable = "❌"
