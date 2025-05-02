@@ -8,7 +8,6 @@ import Mosaicstyles from '../styles/mosaicstyles.module.css';
 
 export default function MainPage(props) {
   const [pageName, setPageName] = useState('HomePage');
-
   const [dbInventoryData, setDBInventoryData] = useState([]);
   const [tableDataMap, setTableData] = useState([]);
 
@@ -19,7 +18,7 @@ export default function MainPage(props) {
     const mountFunctionhelo = async () => {
       const inventoryData = [
         { id: 'Acetominophen', opened: `${false}`, damaged: `${true}` , expiry_date:`${22}/${8}/${2023}`, usable : "❌" },
-        { id: 'Ibuprofen', opened: `${false}`, damaged: `${false}`, expiry_date:`${22}/${3}/${2021}` , usable : "✅"  },
+        { id: 'Ibuprofen', opened: `${false}`, damaged: `${false}`, expiry_date:`${22}/${3}/${2021}` , usable : "❌"  },
         { id: 'Aspirin', opened: `${true}`,  damaged: `${false}` , expiry_date:`${22}/${6}/${2026}` , usable : "❌" },
         { id: 'Oxygen Cylinder', opened: `${false}`,  damaged: `${false}`, expiry_date:`${2}/${8}/${2026}`, usable : "✅"  },
         { id: 'Aloe Vera Footcream', opened: `${false}`, damaged: `${false}`, expiry_date:`${1}/${12}/${2026}`, usable : "✅"  },
