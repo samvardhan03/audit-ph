@@ -1448,7 +1448,7 @@ function MainPage(props) {
                 opened: `${false}`,
                 damaged: `${false}`,
                 expiry_date: `${22}/${3}/${2021}`,
-                usable: "✅"
+                usable: "❌"
             },
             {
                 id: 'Aspirin',
@@ -1506,7 +1506,7 @@ function MainPage(props) {
             setTableData: setTableData
         }, void 0, false, {
             fileName: "[project]/src/app/pages/mainpage.js",
-            lineNumber: 53,
+            lineNumber: 52,
             columnNumber: 20
         }, this);
     } else if (pageName === 'Inventory') {
@@ -1516,13 +1516,13 @@ function MainPage(props) {
             setTableData: setTableData
         }, void 0, false, {
             fileName: "[project]/src/app/pages/mainpage.js",
-            lineNumber: 55,
+            lineNumber: 54,
             columnNumber: 20
         }, this);
     } else if (pageName === 'Activity') {
         mainBodyPage = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$pages$2f$activity$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
             fileName: "[project]/src/app/pages/mainpage.js",
-            lineNumber: 57,
+            lineNumber: 56,
             columnNumber: 20
         }, this);
     }
@@ -1555,12 +1555,12 @@ function MainPage(props) {
                         children: "Mosaic"
                     }, void 0, false, {
                         fileName: "[project]/src/app/pages/mainpage.js",
-                        lineNumber: 64,
+                        lineNumber: 63,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/pages/mainpage.js",
-                    lineNumber: 63,
+                    lineNumber: 62,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Grid$2f$Grid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Grid$3e$__["Grid"], {
@@ -1602,23 +1602,23 @@ function MainPage(props) {
                             children: page
                         }, page, false, {
                             fileName: "[project]/src/app/pages/mainpage.js",
-                            lineNumber: 73,
+                            lineNumber: 72,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/src/app/pages/mainpage.js",
-                    lineNumber: 71,
+                    lineNumber: 70,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/pages/mainpage.js",
-            lineNumber: 62,
+            lineNumber: 61,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/pages/mainpage.js",
-        lineNumber: 61,
+        lineNumber: 60,
         columnNumber: 5
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -1635,7 +1635,7 @@ function MainPage(props) {
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/pages/mainpage.js",
-        lineNumber: 97,
+        lineNumber: 96,
         columnNumber: 5
     }, this);
 }
